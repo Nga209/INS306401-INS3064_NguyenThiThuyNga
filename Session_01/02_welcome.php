@@ -85,8 +85,8 @@
         <h1>Welcome to INS3064</h1>
 
         <div class="info">
-            <p><span class="label">Tên:</span> <?php echo $name; ?></p>
-            <p><span class="label">ID sinh viên:</span> <?php echo $studentId; ?></p>
+            <p><span class="label">Name:</span> <?php echo $name; ?></p>
+            <p><span class="label">ID :</span> <?php echo $studentId; ?></p>
             <p><span class="label">Class:</span> <?php echo $class; ?></p>
             <p><span class="label">Email:</span> <?php echo $email; ?></p>
             <p><span class="label">Date:</span> <?php echo $currentDate; ?></p>
