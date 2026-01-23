@@ -275,19 +275,19 @@
         <div class="student-info">
             <div class="info-field">
                 <label>Student Name:</label>
-                <input type="text" placeholder="________________________">
+                <input type="text" placeholder="Nguyễn Thị Thuý Nga">
             </div>
             <div class="info-field">
                 <label>Student ID:</label>
-                <input type="text" placeholder="_______________">
+                <input type="text" placeholder="23070542">
             </div>
             <div class="info-field">
                 <label>Date:</label>
-                <input type="text" placeholder="________________________">
+                <input type="text" placeholder="23/01/2026">
             </div>
             <div class="info-field">
                 <label>Class:</label>
-                <input type="text" placeholder="_______________">
+                <input type="text" placeholder="INS306401">
             </div>
         </div>
 
