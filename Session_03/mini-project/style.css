@@ -1,31 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    /* Tông màu Neon Cyberpunk */
-    --primary: #00f2fe;
-    --primary-hover: #4facfe;
-    --bg-dark: #0b0f19;
-    --bg-gradient: radial-gradient(circle at top right, #1e1b4b, #0b0f19);
+    /* Tông màu Xám – Be – Ghi tối giản */
+    --primary: #b8a98f;
+    --primary-hover: #a38f75;
+    --bg-dark: #f5f3ef;
+    --bg-gradient: linear-gradient(135deg, #f5f3ef, #eae7e1);
     
-    /* Hiệu ứng kính mờ (Glassmorphism) */
-    --card-bg: rgba(20, 25, 35, 0.6);
-    --card-border: rgba(255, 255, 255, 0.08);
+    /* Hiệu ứng kính mờ nhẹ nhàng */
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --card-border: rgba(0, 0, 0, 0.06);
     
     /* Màu chữ */
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
+    --text-main: #2f2f2f;
+    --text-muted: #7a7a7a;
     
     /* Form & Input */
-    --input-bg: rgba(0, 0, 0, 0.4);
-    --input-border: #334155;
+    --input-bg: rgba(255, 255, 255, 0.95);
+    --input-border: #d6d3ce;
     
     /* Thông báo */
-    --error-bg: rgba(239, 68, 68, 0.15);
-    --error-text: #fca5a5;
-    --error-border: #ef4444;
-    --success-bg: rgba(16, 185, 129, 0.15);
-    --success-text: #6ee7b7;
-    --success-border: #10b981;
+    --error-bg: #fbeaea;
+    --error-text: #a94442;
+    --error-border: #d6a1a1;
+    --success-bg: #eef5ef;
+    --success-text: #4f6f52;
+    --success-border: #a3c9a8;
     
     --radius: 16px;
 }
@@ -55,24 +55,24 @@ body {
     padding: 2.5rem 2rem;
     border-radius: var(--radius);
     border: 1px solid var(--card-border);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
     width: 100%;
     max-width: 420px;
     transition: transform 0.3s ease;
 }
 
 .container:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }
 
 h2 {
     text-align: center;
-    color: #ffffff;
+    color: #2f2f2f;
     font-weight: 700;
     font-size: 1.75rem;
     margin-bottom: 0.5rem;
     letter-spacing: -0.5px;
-    text-shadow: 0 2px 10px rgba(0, 242, 254, 0.2);
 }
 
 .subtitle {
@@ -112,38 +112,39 @@ textarea {
 }
 
 input::placeholder, textarea::placeholder {
-    color: #475569;
+    color: #9c9c9c;
 }
 
-/* Hiệu ứng phát sáng khi click vào ô nhập */
+/* Focus nhẹ, không glow */
 input:focus, textarea:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
-    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 0 2px rgba(184, 169, 143, 0.15);
+    background: #ffffff;
 }
 
-/* Nút bấm Gradient */
+/* Nút bấm tối giản */
 button {
     width: 100%;
     padding: 0.85rem;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
-    color: #000000;
+    background: var(--primary);
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 1rem;
-    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 button:hover:not(:disabled) { 
+    background: var(--primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.5); 
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12); 
 }
 
 button:active:not(:disabled) {
@@ -151,26 +152,33 @@ button:active:not(:disabled) {
 }
 
 button:disabled { 
-    background: #334155; 
-    color: #94a3b8;
+    background: #cfcac2; 
+    color: #8c8c8c;
     box-shadow: none;
     cursor: not-allowed; 
 }
 
-/* Nút phụ & Nút nguy hiểm */
+/* Nút phụ */
 .btn-secondary { 
-    background: #334155; 
-    color: var(--text-main);
+    background: #d6d3ce; 
+    color: #2f2f2f;
     box-shadow: none;
 }
-.btn-secondary:hover:not(:disabled) { background: #475569; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
-.btn-danger { 
-    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); 
-    color: white;
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+.btn-secondary:hover:not(:disabled) { 
+    background: #c8c4be; 
 }
-.btn-danger:hover:not(:disabled) { box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5); }
+
+/* Nút nguy hiểm */
+.btn-danger { 
+    background: #c27b7b; 
+    color: white;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.btn-danger:hover:not(:disabled) { 
+    background: #a45e5e; 
+}
 
 /* Bảng thông báo */
 .alert {
@@ -180,7 +188,6 @@ button:disabled {
     font-weight: 500;
     margin-bottom: 1.25rem;
     border-left: 4px solid;
-    backdrop-filter: blur(4px);
 }
 
 .alert-error {
@@ -195,7 +202,7 @@ button:disabled {
     border-left-color: var(--success-border);
 }
 
-/* Avatar hiển thị trên Dashboard */
+/* Avatar */
 .avatar-img {
     width: 110px;
     height: 110px;
@@ -203,10 +210,10 @@ button:disabled {
     object-fit: cover;
     display: block;
     margin: 0 auto 1.5rem;
-    border: 3px solid var(--primary);
-    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+    border: 2px solid #d6d3ce;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     padding: 3px;
-    background: var(--bg-dark);
+    background: #ffffff;
 }
 
 .text-center { text-align: center; }
@@ -220,8 +227,8 @@ button:disabled {
     font-weight: 500; 
     transition: color 0.2s;
 }
+
 .link:hover { 
-    color: #ffffff;
+    color: #2f2f2f;
     text-decoration: underline; 
-    text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
 }
