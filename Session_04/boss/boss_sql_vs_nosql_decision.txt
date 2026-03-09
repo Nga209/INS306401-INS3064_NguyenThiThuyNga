@@ -1,0 +1,33 @@
+/*
+BOSS FIGHT: SQL vs NoSQL Decision
+
+Scenario 1: High-Velocity Social Media Feed
+Chosen Model: NoSQL
+
+Reason 1: Horizontal Scalability
+Social media platforms handle huge traffic and need databases that can scale across many servers.
+
+Reason 2: Schema Flexibility
+Social media data such as posts, comments, images, and reactions have different structures.
+NoSQL allows flexible schema, making it easier to store different types of data.
+
+Reason 3: High Performance
+NoSQL databases are optimized for fast reads and writes, which is important for real-time feeds.
+
+--------------------------------------------------
+
+Scenario 2: Secure Bank Ledger
+Chosen Model: SQL
+
+Reason 1: ACID Transactions
+Banking systems require strict ACID properties to ensure every transaction is processed safely.
+
+Reason 2: Data Integrity
+SQL databases enforce structured schemas and relationships to maintain correct financial records.
+
+Reason 3: Reliability
+Bank systems require accurate transaction history and strong consistency.
+
+Reason 4: Vertical Scalability
+Financial systems usually scale vertically using powerful servers to maintain stability.
+*/
