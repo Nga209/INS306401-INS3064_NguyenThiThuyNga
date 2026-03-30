@@ -43,6 +43,7 @@ if (isset($_GET['success'])) {
 
 <p>
     <a href="create.php" class="btn btn-add">+ Thêm sinh viên</a>
+    <a href="../index.php" style="margin-left: 10px;">← Về trang chính</a>
 </p>
 
 <table>
