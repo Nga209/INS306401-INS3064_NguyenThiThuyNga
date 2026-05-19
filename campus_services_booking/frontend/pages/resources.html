@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Khám Phá Tài Nguyên | Campus Booking</title>
+    <link rel="stylesheet" href="../assets/css/resources.css">
+</head>
+<body>
+    <!-- Sidebar nạp tự động -->
+
+    <main class="main-content">
+        <header class="header-center">
+            <p class="top-badge-v2">KHÔNG GIAN TIỆN NGHI</p>
+            <h1 class="section-title">Khám Phá Tài Nguyên</h1>
+            <p class="sub-text">Chọn không gian phù hợp để bắt đầu hành trình học tập, nghiên cứu và rèn luyện trong khuôn viên trường.</p>
+        </header>
+
+        <!-- Search & Filter Section -->
+        <div class="search-filter-wrapper">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search-input" class="search-bar" placeholder="Tìm kiếm không gian, tòa nhà...">
+            </div>
+
+            <div class="categories-container" id="category-filters">
+                <button class="cat-btn active" onclick="filterByCategory('all', this)">Tất cả</button>
+                <button class="cat-btn" onclick="filterByCategory('Phòng tự học nhóm', this)">Phòng tự học nhóm</button>
+                <button class="cat-btn" onclick="filterByCategory('Sân bóng đá', this)">Sân bóng đá</button>
+                <button class="cat-btn" onclick="filterByCategory('Phòng máy tính', this)">Phòng máy tính</button>
+                <button class="cat-btn" onclick="filterByCategory('Hội trường/Phòng họp', this)">Hội trường/Phòng họp</button>
+                <button class="cat-btn" onclick="filterByCategory('Phòng Studio/Media', this)">Phòng Studio/Media</button>
+            </div>
+        </div>
+
+        <div id="resource-list" class="grid">
+            <p style="text-align: center; grid-column: 1/-1;">Đang tải dữ liệu không gian...</p>
+        </div>
+    </main>
+
+    <!-- Redesigned Premium Modal -->
+    <div id="booking-modal" class="modal-v2">
+        <div class="modal-content-v2">
+            <h2 id="modal-title" class="modal-title-v2">Đặt lịch</h2>
+            
+            <form id="form-dat-cho">
+                <input type="hidden" id="target-resource-id">
+                
+                <div class="form-group">
+                    <label class="form-label">Tên người đặt:</label>
+                    <input type="text" id="input-booked-name" class="form-input-v2" placeholder="Nhập tên người sử dụng..." required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Chọn ngày:</label>
+                    <input type="date" id="input-date" class="form-input-v2" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Chọn ca thể thao/học tập:</label>
+                    <select id="select-slot" class="form-input-v2" required>
+                        <option value="">Đang tải danh sách ca...</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-confirm">Xác nhận đặt ngay</button>
+                <button type="button" class="btn-cancel-v2" onclick="dongModal()">Hủy bỏ</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/api.js?v=3.0"></script>
+    <script src="../assets/js/auth.js?v=3.0"></script>
+    <script src="../assets/js/components.js?v=3.0"></script>
+    <script>
+        loadSidebar('resources');
+        baoVeTrang(); // Cho phép mọi user đã đăng nhập
+    </script>
+    <script src="../assets/js/booking.js?v=1.3"></script>
+
+</body>
+</html>

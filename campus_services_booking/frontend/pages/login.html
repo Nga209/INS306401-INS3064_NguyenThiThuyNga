@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập | Campus Services Booking</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+<body>
+
+    <div class="pro-login-page">
+        <div class="main-overlay"></div>
+
+        <div class="content-container">
+            <div class="text-hero">
+                <div class="brand-tag">Nền tảng quản lý số 1 Campus</div>
+                <h1>Khơi nguồn tri thức <br><span>Chinh phục không gian</span></h1>
+                <p>Hệ thống giúp bạn kết nối nhanh nhất tới các phòng nghiên cứu và thiết bị hiện đại.</p>
+                
+                <div class="stat-group">
+                    <div class="stat-box"><strong>24/7</strong><span>Sẵn sàng</span></div>
+                    <div class="stat-box"><strong>5s</strong><span>Phê duyệt</span></div>
+                    <div class="stat-box"><strong>100%</strong><span>Minh bạch</span></div>
+                </div>
+            </div>
+
+            <div class="login-card-floating">
+                <div class="form-title">
+                    <h2>Chào mừng trở lại</h2>
+                    <p>Hệ thống Campus Services</p>
+                </div>
+
+                <div id="errorMsg" class="error-banner" style="display: none; background: #fee2e2; color: #dc2626; padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9rem; border: 1px solid #fecaca;"></div>
+
+                <form id="loginForm">
+                    <div class="input-field">
+                        <label><i class="fa-solid fa-user-shield"></i> BẠN LÀ AI?</label>
+                        <select name="role" id="role">
+                            <option value="user">Sinh viên (User)</option>
+                            <option value="teacher">Giảng viên (Teacher)</option>
+                            <option value="admin">Quản trị viên (Admin)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-field">
+                        <label><i class="fa-solid fa-envelope"></i> EMAIL TÀI KHOẢN</label>
+                        <input type="email" name="email" id="email" placeholder="user@campus.edu.vn" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label><i class="fa-solid fa-lock"></i> MẬT KHẨU</label>
+                        <div class="pass-wrapper" style="position: relative; display: flex; align-items: center;">
+                            <input type="password" name="password" id="password" placeholder="••••••••" required style="width: 100%; padding-right: 45px;">
+                            <i class="fa-solid fa-eye-slash" id="togglePass" style="position: absolute; right: 15px; cursor: pointer; color: #64748b; transition: 0.3s; z-index: 10;"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-main-login" id="submitBtn">
+                        <span class="btn-text">Đăng Nhập Ngay</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <div class="form-links">
+                    <a href="#">Quên mật khẩu?</a>
+                    <span>•</span>
+                  <a href="../index/index.html">Về Trang chủ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../assets/js/api.js?v=1.1"></script>
+    <script src="../assets/js/auth.js?v=1.1"></script>
+
+
+
+    <script>
+        const roleSelect = document.getElementById('role');
+        const emailInput = document.getElementById('email');
+        const passInput = document.getElementById('password');
+        const togglePass = document.getElementById('togglePass');
+        const errorMsg = document.getElementById('errorMsg');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // 1. Ẩn hiện mật khẩu & đổi icon chuẩn Font Awesome 6
+        togglePass.addEventListener('click', () => {
+            const isPassword = passInput.type === 'password';
+            passInput.type = isPassword ? 'text' : 'password';
+            
+            // Xử lý đổi class icon
+            if (isPassword) {
+                togglePass.classList.replace('fa-eye-slash', 'fa-eye');
+                togglePass.style.color = '#6366f1';
+            } else {
+                togglePass.classList.replace('fa-eye', 'fa-eye-slash');
+                togglePass.style.color = '#64748b';
+            }
+        });
+
+        // 2. Placeholder thông minh
+        roleSelect.addEventListener('change', function() {
+            emailInput.placeholder = `${this.value}@campus.edu.vn`;
+        });
+
+        // 3. Xử lý Đăng nhập bằng hàm tập trung từ auth.js
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            errorMsg.style.display = 'none';
+            
+            submitBtn.disabled = true;
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang xử lý...';
+
+            const email = emailInput.value;
+            const password = passInput.value;
+            const role = roleSelect.value;
+
+            const result = await xuLyDangNhap(email, password, role);
+
+            if (!result.success) {
+                errorMsg.innerText = "❌ " + result.message;
+                errorMsg.style.display = 'block';
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+            // Nếu thành công, hàm xuLyDangNhap sẽ tự động redirect
+        });
+    </script>
+</body>
+</html>

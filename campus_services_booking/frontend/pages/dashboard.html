@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Hệ Thống Quản Lý | Campus Booking</title>
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+        <!-- Header -->
+        <header class="premium-header">
+            <div class="header-info">
+                <h1>Chào mừng bạn quay lại, Admin! ✨</h1>
+              <p>Tổng quan hệ thống hôm nay đã được cập nhật. Cùng xem nhanh những hoạt động mới nhất nhé.</p>
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #eef2ff; color: #4338ca;"><i class="fas fa-layer-group"></i></div>
+                <span id="tong-don-dat" class="stat-val">38</span>
+                <span class="stat-label">Tổng đơn đặt</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #fffbeb; color: #d97706;"><i class="fas fa-hourglass-half"></i></div>
+                <span id="don-cho-duyet" class="stat-val">05</span>
+                <span class="stat-label">Đang chờ duyệt</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #ecfdf5; color: #059669;"><i class="fas fa-check-double"></i></div>
+                <span id="so-tai-nguyen" class="stat-val">32</span>
+                <span class="stat-label">Đã hoàn thành</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #fdf2f2; color: #dc2626;"><i class="fas fa-user-check"></i></div>
+                <span class="stat-val">14</span>
+                <span class="stat-label">Người dùng mới</span>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Chart -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <div class="card-title"><i class="fas fa-chart-line" style="color: var(--primary);"></i> Thống kê tuần này</div>
+                </div>
+                <div style="height: 300px;"><canvas id="proChart"></canvas></div>
+            </div>
+
+            <!-- Recent -->
+            <div class="glass-card">
+                <div class="card-title" style="margin-bottom: 20px;"><i class="fas fa-bolt" style="color: var(--warning);"></i> Gần đây</div>
+                <div id="recent-activity-list" class="activity-list">
+                    <!-- Dữ liệu thật sẽ được nạp vào đây bởi dashboard.js -->
+                    <p style="text-align: center; color: #94a3b8; padding: 20px;">Đang tải hoạt động...</p>
+                </div>
+                <button style="width: 100%; margin-top: 20px; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; background: white; font-weight: 700; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='white'">Xem tất cả báo cáo</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../assets/js/api.js?v=3.0"></script>
+    <script src="../assets/js/auth.js?v=3.0"></script>
+    <script src="../assets/js/components.js?v=3.0"></script>
+    <script src="../assets/js/dashboard.js?v=3.0"></script>
+    <script>
+        // Load Sidebar
+        if(typeof loadSidebar === 'function') loadSidebar('dashboard');
+        if(typeof baoVeTrang === 'function') baoVeTrang(['admin', 'teacher']);
+
+        // Chart.js - Hiệu ứng Line mượt mà cho số liệu bé
+        const ctx = document.getElementById('proChart').getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, 'rgba(99, 102, 241, 0.2)');
+        gradient.addColorStop(1, 'rgba(99, 102, 241, 0)');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Th 2', 'Th 3', 'Th 4', 'Th 5', 'Th 6', 'Th 7', 'CN'],
+                datasets: [{
+                    label: 'Số đơn đặt',
+                    data: [5, 8, 4, 12, 9, 3, 2], // Số liệu < 50
+                    borderColor: '#6366f1',
+                    borderWidth: 4,
+                    fill: true,
+                    backgroundColor: gradient,
+                    tension: 0.4,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#6366f1',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        max: 20, // Giới hạn trục Y thấp để biểu đồ nhìn cao hơn
+                        grid: { color: '#f1f5f9' },
+                        ticks: { stepSize: 5 }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+:root {
+    --primary-color: #4f46e5; /* Tím xanh hiện đại */
+    --secondary-color: #0ea5e9;
+    --text-main: #1e293b;
+    --text-light: #64748b;
+    --white: #ffffff;
+    --bg-light: #f8fafc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    transition: 0.3s;
+}

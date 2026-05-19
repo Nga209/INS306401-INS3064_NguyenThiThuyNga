@@ -1,0 +1,382 @@
+/* ================================================================
+   resources.css — CSS dành riêng cho trang resources.html
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   1. BIẾN & RESET
+   ---------------------------------------------------------------- */
+:root {
+    --primary: #5c59f2;
+    --primary-light: rgba(92, 89, 242, 0.1);
+    --success: #10b981;
+    --danger: #ef4444;
+    --slate: #64748b;
+    --dark: #0B0F19;
+    --sidebar-width: 260px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8fafc;
+    color: var(--dark);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ----------------------------------------------------------------
+   2. SIDEBAR (được inject bởi components.js)
+   ---------------------------------------------------------------- */
+.sidebar {
+    width: var(--sidebar-width);
+    background: #1e293b;
+    color: white;
+    padding: 30px 20px;
+    position: fixed;
+    height: 100vh;
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    color: #0ea5e9;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.sidebar-menu a i { margin-right: 12px; width: 20px; }
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background: #4f46e5;
+    color: white;
+}
+
+/* ----------------------------------------------------------------
+   3. MAIN CONTENT
+   ---------------------------------------------------------------- */
+.main-content {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    padding: 50px;
+}
+
+.header-center {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    color: #312e81;
+    margin-bottom: 15px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.sub-text {
+    color: #64748b;
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ----------------------------------------------------------------
+   4. BADGE
+   ---------------------------------------------------------------- */
+.top-badge-v2 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 20px;
+    background: #eef2ff;
+    color: var(--primary);
+    border-radius: 50px;
+    font-size: 12px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------------
+   5. TÌM KIẾM & BỘ LỌC
+   ---------------------------------------------------------------- */
+.search-filter-wrapper {
+    background: white;
+    padding: 25px 35px;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    max-width: 1000px;
+    margin: 0 auto 50px;
+}
+
+.search-container {
+    max-width: 100%;
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 16px 25px 16px 55px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.05);
+    background: #f8fafc;
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.search-icon {
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 18px;
+}
+
+.categories-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    flex-wrap: nowrap;
+    margin-bottom: 0;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.categories-container::-webkit-scrollbar { display: none; }
+
+.cat-btn {
+    padding: 10px 22px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.05);
+    background: white;
+    color: var(--slate);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.cat-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.cat-btn:hover:not(.active) { background: #f1f5f9; }
+
+/* ----------------------------------------------------------------
+   6. LƯỚI TÀI NGUYÊN
+   ---------------------------------------------------------------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ----------------------------------------------------------------
+   7. THẺ TÀI NGUYÊN (RESOURCE CARD)
+   ---------------------------------------------------------------- */
+.resource-card {
+    position: relative;
+    padding: 30px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid #f1f5f9;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.status-badge {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-available { background: #ecfdf5; color: var(--success); }
+.status-busy { background: #fef2f2; color: var(--danger); }
+
+.resource-icon-v2 {
+    width: 55px;
+    height: 55px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.icon-blue  { background: #eff6ff; color: #3b82f6; }
+.icon-green { background: #f0fdf4; color: #22c55e; }
+.icon-purple{ background: #faf5ff; color: #a855f7; }
+
+.resource-card h3 {
+    font-size: 1.4rem;
+    color: #0f172a;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.resource-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.detail-item i { width: 20px; text-align: center; color: #94a3b8; }
+.detail-label  { min-width: 60px; }
+.detail-value  { color: #1e293b; font-weight: 600; margin-left: auto; }
+
+/* ----------------------------------------------------------------
+   8. MODAL ĐẶT LỊCH
+   ---------------------------------------------------------------- */
+.modal-v2 {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(8px);
+}
+
+.modal-content-v2 {
+    background: #f8fafc;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.8);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.15);
+    padding: 40px;
+    max-width: 480px;
+    width: 90%;
+    margin: 5% auto;
+    position: relative;
+}
+
+.modal-title-v2 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #1e293b;
+    letter-spacing: -0.5px;
+    margin-top: 0;
+}
+
+.form-group  { margin-bottom: 22px; }
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #475569;
+}
+
+.form-input-v2 {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: white;
+    font-family: inherit;
+    font-size: 15px;
+    color: #333;
+    transition: 0.3s;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.01);
+}
+
+.form-input-v2:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.btn-confirm {
+    background: var(--primary);
+    color: white;
+    width: 100%;
+    padding: 16px;
+    border-radius: 16px;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 15px rgba(92, 89, 242, 0.2);
+    margin-top: 10px;
+}
+
+.btn-confirm:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(92, 89, 242, 0.3);
+}
+
+.btn-cancel-v2 {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: inherit;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-cancel-v2:hover { color: #1e293b; }
